@@ -1,0 +1,68 @@
+# 项目配置及服务配置
+---
+# 数据库配置
+sequelize:
+  dialect: mysql
+  database: godspen_db
+  host: db
+  port: '3306'
+  username: root
+  password: root
+#
+# Elasticsearch 配置
+es:
+  host: "es:9200"
+#
+# redis 配置
+# 可为单点 传入 port host
+# 可为集群构架，传入数组，提供至少一个节点
+redis:
+  # 单点 模式
+  host: redis
+  port: 6379
+  # cluster 模式
+  # - host: redis1
+  #   port: 6379
+  # - host: redis2
+  #   port: 6379
+###########################################################
+# 以上服务默认使用docker-compose启动了，如需使用自建服务，请自行配置
+# 以下服务及配置请自行配置
+###########################################################
+# oss配置
+# 目前仅支持阿里云的oss服务
+oss:
+  accessKeyId: <accessKeyId>
+  accessKeySecret: <accessKeySecret>
+  host: https://<pre-domain>.aliyuncs.com
+  bucket: <bucket>
+  region: <region> # eg. oss-cn-hangzhou
+#
+# smtp邮件发送服务配置
+mail:
+  host: <host> # smtp.mxhichina.com
+  port: <host> # eg. '465'
+  secure: true # port 为465时，请尽量设置为true
+  user: <user> # eg. name@qq.com
+  pass: <pass> # password
+#
+# 钉钉告警机器人token，为空则不开启钉钉告警服务
+dingding:
+#
+# 页面访问地址一级路径，默认为view
+# VIEW_PATH: view
+#
+# 管理后台访问地址一级路径，默认为admin
+# ADMIN_PATH: admin
+#
+# 编辑器访问地址一级路径，默认为editor
+# EDITOR_PATH: editor
+#
+# 服务访问地址一级路径，默认为api
+# API_PATH: api
+#
+# 编辑器标题，默认为“编辑器”
+# EDITOR_TITLE: 编辑器
+#
+# 管理后台标题，默认为“管理后台”
+# ADMIN_TITLE: 管理后台

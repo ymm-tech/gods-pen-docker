@@ -1,0 +1,7 @@
+.git
+.gitignore
+.dockerignore
+docker-compose.yml
+sql
+nginx.conf
+Makefile

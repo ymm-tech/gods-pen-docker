@@ -1,0 +1,70 @@
+version: '3.4'
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - "static-html:/usr/share/nginx/html"
+      - "$PWD/nginx.conf:/etc/nginx/conf.d/default.conf"
+    depends_on:
+      - godspen
+    ports:
+      - "80:80"
+  godspen:
+    volumes:
+      - "static-html:/app/static-html"
+    depends_on:
+      - db
+      - redis
+    build: .
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: godspen_db
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - "mysqldb:/var/lib/mysql"
+      - "$PWD/sql:/docker-entrypoint-initdb.d"
+  es:
+    image: elasticsearch:6.7.1
+    container_name: es
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - "127.0.0.1:9200:9200"
+  es2:
+    image: elasticsearch:6.7.1
+    container_name: es2
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=es"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata2:/usr/share/elasticsearch/data
+  kibana:
+    image: kibana:6.7.1
+    ports:
+      - "127.0.0.1:5601:5601"
+    environment:
+      ELASTICSEARCH_HOSTS: http://es:9200
+  redis:
+    image: redis
+volumes:
+  static-html:
+  mysqldb:
+  esdata1:
+  esdata2:
