@@ -58,9 +58,6 @@ dingding:
 # 编辑器访问地址一级路径，默认为editor
 # EDITOR_PATH: editor
 #
-# 服务访问地址一级路径，默认为api
-# API_PATH: api
-#
 # 编辑器标题，默认为“编辑器”
 # EDITOR_TITLE: 编辑器
 #
