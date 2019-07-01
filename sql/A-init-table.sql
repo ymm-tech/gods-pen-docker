@@ -310,6 +310,7 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
   `project_count` int(11) DEFAULT '0',
   `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `oauth` VARCHAR(64) NULL DEFAULT NULL COMMENT '第三方登录鉴权id：渠道_id',
   PRIMARY KEY (`id`),
   KEY `searchEmail` (`email`) USING BTREE,
   KEY `searchName` (`name`) USING BTREE
