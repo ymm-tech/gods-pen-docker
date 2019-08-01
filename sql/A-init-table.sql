@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `tb_component` (
   `desc` varchar(200) DEFAULT NULL COMMENT '简单描述',
   `isnew` int(11) DEFAULT NULL COMMENT '是否是最新版本  1：是 0：否',
   `usenumber` bigint(20) unsigned DEFAULT '0' COMMENT '使用量',
+  `type` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT '组件类型，默认0，普通组件；1，flutter 组件；',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=377 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='组件列表';
 
@@ -99,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `tb_group` (
   `logo` varchar(200) DEFAULT '',
   `project_count` int(5) NOT NULL DEFAULT '0',
   `user_count` int(5) NOT NULL DEFAULT '0',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1146 DEFAULT CHARSET=utf8;
 
@@ -110,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `tb_group_and_project` (
   `project_id` bigint(20) NOT NULL,
   `group_id` bigint(20) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`project_id`,`group_id`),
   KEY `group_id` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -123,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `tb_group_and_user` (
   `group_id` bigint(20) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `role` tinyint(1) DEFAULT '1' COMMENT '用户在项目组中的角色, 1创建者, 2管理员, 3组员',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`,`group_id`),
   KEY `group_id` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -147,8 +148,8 @@ CREATE TABLE IF NOT EXISTS `tb_login_log` (
   `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(11) NOT NULL,
   `ip` varchar(255) DEFAULT NULL COMMENT '登录IP地址',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `INDEX_UPDATE_TIME` (`update_time`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
@@ -193,6 +194,8 @@ CREATE TABLE IF NOT EXISTS `tb_pages` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '页面创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '页面更改时间',
   `visibilitylevel` int(5) NOT NULL DEFAULT '1' COMMENT '显示状态（0私有，1公共开放）',
+  `type` TINYINT(1) UNSIGNED ZEROFILL NOT NULL DEFAULT '0' COMMENT '页面类型，默认0，普通页面；1，flutter 页面；',
+  `fork` INT(1) NULL DEFAULT '1' COMMENT '页面fork数量',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `Index` (`key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8mb4 COMMENT='abc';
@@ -308,8 +311,8 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
   `telephone` varchar(16) DEFAULT '',
   `photo` varchar(100) DEFAULT NULL COMMENT '头像地址',
   `project_count` int(11) DEFAULT '0',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `oauth` VARCHAR(64) NULL DEFAULT NULL COMMENT '第三方登录鉴权id：渠道_id',
   PRIMARY KEY (`id`),
   KEY `searchEmail` (`email`) USING BTREE,
@@ -323,8 +326,8 @@ CREATE TABLE IF NOT EXISTS `tb_user_and_project` (
   `user_id` bigint(20) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `role` tinyint(1) DEFAULT '1' COMMENT '用户在项目中的角色, 1Owner, 2Master, 3Dev, 4Guest',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_favor` tinyint(1) DEFAULT '0' COMMENT '是否关注，0未关注，1已关注',
   PRIMARY KEY (`project_id`,`user_id`),
   KEY `user_id` (`user_id`)
@@ -352,10 +355,10 @@ CREATE TABLE IF NOT EXISTS `tb_user_login` (
   `email` varchar(50) DEFAULT '',
   `status` tinyint(1) DEFAULT '1' COMMENT '是否可用状态：1-可用 2-不可用',
   `last_ip` varchar(20) DEFAULT NULL COMMENT '上次登录IP',
-  `last_login` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '上次登录时间',
+  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上次登录时间',
   `sso_uid` bigint(20) DEFAULT '0' COMMENT 'SSO登录映射用户ID',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '注册时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
   `security` varchar(64) DEFAULT '' COMMENT '秘钥信息',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=338 DEFAULT CHARSET=utf8;
