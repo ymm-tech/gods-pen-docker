@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `tb_pages` (
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '页面更改时间',
   `visibilitylevel` int(5) NOT NULL DEFAULT '1' COMMENT '显示状态（0私有，1公共开放）',
   `type` TINYINT(1) UNSIGNED ZEROFILL NOT NULL DEFAULT '0' COMMENT '页面类型，默认0，普通页面；1，flutter 页面；',
-  `fork` INT(1) NULL DEFAULT '1' COMMENT '页面fork数量',
+  `fork` INT(1)     UNSIGNED ZEROFILL NOT NULL DEFAULT '0' COMMENT '页面fork数量',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `Index` (`key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8mb4 COMMENT='abc';
