@@ -60,7 +60,7 @@ nginx.conf 整合了 码良 内部的多个服务，是最终交付服务的实�
 [2019-04-30T02:43:53,041][INFO ][o.e.n.Node               ] [gKecOlD] closed
 </pre>
 
-据es文档
+据 [es文档](https://www.elastic.co/guide/en/elasticsearch/reference/6.7/vm-max-map-count.html)
 
 > Elasticsearch 对各种文件混合使用了 NioFs（ 注：非阻塞文件系统）和 MMapFs （ 注：内存映射文件系统）。请确保你配置的最大映射数量，以便有足够的虚拟内存可用于 mmapped 文件。这可以暂时设置：   
 `sysctl -w vm.max_map_count=262144`   
