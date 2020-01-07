@@ -6,6 +6,9 @@
 
 码良 依赖 es、redis、mysql、邮件、oss服务，其中 es、redis、mysql 默认由docker容器提供，见 docker-compose.yaml。
 
+## 视频教程
+[点击前往](https://www.bilibili.com/video/av82434809/)
+
 ## HOW
 
 ### 必要条件
