@@ -1,21 +1,11 @@
-version: '3.4'
+version: "3.4"
 services:
   nginx:
     image: nginx
     volumes:
-      - "static-html:/usr/share/nginx/html"
+      - "$PWD/gods-pen-dist:/usr/share/nginx/html"
       - "$PWD/nginx.conf:/etc/nginx/conf.d/default.conf"
-    depends_on:
-      - godspen
-    ports:
-      - "80:80"
-  godspen:
-    volumes:
-      - "static-html:/app/static-html"
-    depends_on:
-      - db
-      - redis
-    build: .
+    network_mode: host
   db:
     image: mysql:5.7
     environment:
@@ -63,6 +53,8 @@ services:
       ELASTICSEARCH_HOSTS: http://es:9200
   redis:
     image: redis
+    ports:
+      - "127.0.0.1:6379:6379"
 volumes:
   static-html:
   mysqldb:

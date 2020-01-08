@@ -2,9 +2,7 @@
 
 ## WHAT
 
-本项目提供了 码良 的私有部署（On-Premise）。基于 docker 及 docker-compose，部署你自己的 码良 服务。
-
-码良 依赖 es、redis、mysql、邮件、oss服务，其中 es、redis、mysql 默认由docker容器提供，见 docker-compose.yaml。
+码良 依赖 es、redis、mysql、邮件、oss服务，其中 es、redis、mysql ，nginx默认由docker容器提供，见 docker-compose.yaml。 码良的源码独立部署，方便开发和修改
 
 ## 视频教程
 [点击前往](https://www.bilibili.com/video/av82434809/)
@@ -27,7 +25,7 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 
 ### 获取代码
 
-[项目地址](https://github.com/ymm-tech/gods-pen-docker)，该项目提供了 docker-compose 配置。
+[项目地址](https://github.com/ymm-tech/gods-pen-docker) 
 
 ```bash
 git clone https://github.com/ymm-tech/gods-pen-docker.git

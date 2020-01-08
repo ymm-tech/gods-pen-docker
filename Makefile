@@ -1,15 +1,16 @@
-# 构建 docker-compose依赖的本地镜像
-build:
-	docker-compose build
+# 安装gods-pen-cli工具方便clone项目，并且启动基本服务
+install:
+	npm i -g gods-pen-cli
+	docker-compose up -d
+fetch:
+	gods-pen serve fetch
 
 # 启动所有服务
-start-server:
-	docker-compose up -d
+build:
+	gods-pen serve build
 
-# 中止所有服务
-stop-server:
-	docker-compose stop
+start:
+  cd gods-pen-server && npm run serve
 
-# 终止并移除所有服务
-remove-server:
-	docker-compose down
+stop:
+  cd gods-pen-server && npm run stop

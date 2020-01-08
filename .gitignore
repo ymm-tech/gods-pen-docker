@@ -1,0 +1,11 @@
+*.log
+.cache
+.DS_Store
+.vscode/
+.idea/
+node_modules/
+dist/
+gods-pen/
+gods-pen-admin/
+gods-pen-server/
+gods-pen-dist/
