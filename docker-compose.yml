@@ -3,7 +3,7 @@ services:
   nginx:
     image: nginx
     volumes:
-      - "$PWD/gods-pen-dist:/usr/share/nginx/html"
+      - "$PWD/gods-pen-dist/:/usr/share/nginx/html"
       - "$PWD/nginx.conf:/etc/nginx/conf.d/default.conf"
     network_mode: host
   db:
@@ -45,18 +45,11 @@ services:
         hard: -1
     volumes:
       - esdata2:/usr/share/elasticsearch/data
-  kibana:
-    image: kibana:6.7.1
-    ports:
-      - "127.0.0.1:5601:5601"
-    environment:
-      ELASTICSEARCH_HOSTS: http://es:9200
   redis:
     image: redis
     ports:
       - "127.0.0.1:6379:6379"
 volumes:
-  static-html:
   mysqldb:
   esdata1:
   esdata2:

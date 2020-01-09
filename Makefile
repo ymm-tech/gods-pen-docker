@@ -1,7 +1,7 @@
 # 安装gods-pen-cli工具方便clone项目，并且启动基本服务
 install:
-	npm i -g gods-pen-cli
-	docker-compose up -d
+	npm i -g gods-pen-cli && docker-compose up -d
+
 fetch:
 	gods-pen serve fetch
 
@@ -9,8 +9,6 @@ fetch:
 build:
 	gods-pen serve build
 
-start:
-  cd gods-pen-server && npm run serve
+start-server:
+	cd ./gods-pen-server && npm run serve
 
-stop:
-  cd gods-pen-server && npm run stop
