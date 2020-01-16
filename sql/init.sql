@@ -132,16 +132,6 @@ CREATE TABLE `tb_component` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_component`
---
-
-LOCK TABLES `tb_component` WRITE;
-/*!40000 ALTER TABLE `tb_component` DISABLE KEYS */;
-INSERT INTO `tb_component` VALUES (1,'truck/image','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/ymm-maliang/truck/image/0.1.7/index.js',1,'0.1.7',1,1,'2019-01-03 10:40:07','2019-04-22 07:04:07','图片',1,0,0),(2,'truck/text','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/ymm-maliang/truck/text/0.1.7/index.js',1,'0.1.7',1,1,'2018-11-15 05:34:09','2019-04-22 07:04:07','文本',1,0,0),(3,'truck/button','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/ymm-maliang/truck/button/0.1.6/index.js',1,'0.1.6',1,1,'2018-11-15 05:23:00','2019-04-22 07:04:07','按钮',1,0,0),(4,'truck/emptyContainer','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/truck/emptyContainer/1.0.2/index.js',1,'1.0.2',1,1,'2018-06-11 11:02:19','2019-04-22 07:04:07','空容器节点',1,0,0),(5,'truck/richtext','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/truck/richtext/1.1.5/index.js',1,'1.1.5',1,1,'2018-06-29 03:38:42','2019-04-22 07:04:07','富文本',1,0,0),(6,'truck/PageContainer','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/truck/PageContainer/1.0.2/index.js',1,'1.0.2',1,1,'2018-06-11 11:01:25','2019-04-22 07:04:07','页面容器组件',1,0,0),(7,'truck/ListContainer','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/truck/ListContainer/0.1.5/index.js',1,'0.1.5',1,1,'2018-07-30 07:52:35','2019-04-22 07:05:04','列表容器',1,0,0),(8,'truck/video','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/truck/video/0.1.7/index.js',1,'0.1.7',1,1,'2018-06-12 00:42:50','2019-04-22 07:05:04','视频组件，用于播放视频',1,0,0),(9,'truck/audio','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/truck/audio/0.1.3/index.js',1,'0.1.3',1,1,'2018-06-12 00:46:47','2019-04-22 07:05:04','音频组件',1,0,0),(10,'truck/drumPad','https://ymm-maliang.oss-cn-hangzhou.aliyuncs.com/ymm-maliang/truck/drumPad/1.0.1/index.js',1,'1.0.1',1,1,'2018-12-27 07:43:39','2019-04-22 07:05:04','格子块，n行n列的块状区域，每个块有两个状态',1,0,0);
-/*!40000 ALTER TABLE `tb_component` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_component_use`
 --
 
